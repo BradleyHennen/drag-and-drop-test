@@ -6,7 +6,7 @@ import Task from './task.jsx';
 const Container = styled.div`
     margin: 20px auto;
     border: 1px solid black;
-    border-radius: 2px;
+    border-radius: 10px;
     width: 50%;
     
 `;
@@ -23,6 +23,7 @@ export default class Column extends React.Component {
     render() {
         return (
             <Container>
+                <Container>
                 <Title>{this.props.column.title}</Title>
                 <Droppable droppableId={this.props.column.id}>
                     {provided => (
@@ -38,6 +39,7 @@ export default class Column extends React.Component {
                     )}
 
                 </Droppable>
+            </Container>
             </Container>
         )
     }
