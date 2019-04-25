@@ -18,25 +18,30 @@ class App extends React.Component {
     state = initialData;
 
     onDragEnd = (result) => {
-        // const {destination, source, draggableId} = result;
-        const items = reorder(
-            this.state.tasks,
-            result.source.index,
-            result.destination.index
+        // reorder results
+        const reorderedTasks = reorder(
+            this.state.tasks,           // starting array data
+            result.source.index,        // starting array index
+            result.destination.index    // ending array index
         );
 
+        // update our state
         this.setState({
-            tasks: items,
+            tasks: reorderedTasks,
         });
     }
 
     finishReorder = () => {
+        // this function could dispatch to a saga for your PUT/update
+
+        // prove our order is correct in state
         console.log('final order: ', this.state.tasks);        
     }
 
     render() {
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
+                {/* tasks must be the current tasks from state, not initialData */}
                 <Column tasks={this.state.tasks} finishReorder={this.finishReorder} />            
             </DragDropContext>
         );
