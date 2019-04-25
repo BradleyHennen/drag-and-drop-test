@@ -24,8 +24,8 @@ export default class Column extends React.Component {
         return (
             <Container>
                 <Container>
-                <Title>{this.props.column.title}</Title>
-                <Droppable droppableId={this.props.column.id}>
+                <Title>Title</Title>
+                <Droppable droppableId="this-id">
                     {provided => (
                         <TaskList
                             ref={provided.innerRef}
@@ -39,6 +39,7 @@ export default class Column extends React.Component {
                     )}
 
                 </Droppable>
+                <button onClick={this.props.finishReorder}>Done</button>
             </Container>
             </Container>
         )
